@@ -3,7 +3,7 @@ Client: [::1]:55402; server: [::1]:8080; one POST /notes transaction.
 TCP flags: [S] = SYN, [S.] = SYN/ACK, [.] = ACK, [P.] = payload+ACK, [F.] = FIN+ACK.
 
 ===== 1. TCP THREE-WAY HANDSHAKE: SYN -> SYN/ACK -> ACK =====
-reading from file /mnt/c/Users/user/Documents/Codex/2026-09-11/new-chat/work/DevOps-Intro/submissions/evidence/lab4-trace.pcap, link-type EN10MB (Ethernet), snapshot length 262144
+reading from file lab4-trace.pcap, link-type EN10MB (Ethernet), snapshot length 262144
 2026-09-18 00:55:09.190530 IP6 ::1.55402 > ::1.8080: Flags [S], seq 3073813130, win 65476, options [mss 65476,sackOK,TS val 3718913869 ecr 0,nop,wscale 7], length 0
 `	...(.@.................................j...6...........0.........
 ...M........
