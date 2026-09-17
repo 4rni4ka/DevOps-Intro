@@ -56,7 +56,7 @@ The baseline's individual job durations were 17 s (`vet`), 26 s (`test`), and 25
 
 1. `actions/setup-go` caches the module and Go build caches, keyed from `app/go.mod` because this zero-dependency module has no `go.sum` yet.
 2. `vet` and `test` use a parallel Go 1.23/1.24 matrix with `fail-fast: false`.
-3. Event path filters run CI only for `app/**` and `.github/workflows/ci.yml`; a documentation-only demonstration PR is linked in the final PR description.
+3. Event path filters run CI only for `app/**` and `.github/workflows/ci.yml`; [documentation-only PR #2](https://github.com/4rni4ka/DevOps-Intro/pull/2) reports no checks, demonstrating the skip.
 4. Branch protection requires only `ci-ok`, so matrix check names can evolve without leaving obsolete required checks pending.
 
 ### Task 2 design questions
