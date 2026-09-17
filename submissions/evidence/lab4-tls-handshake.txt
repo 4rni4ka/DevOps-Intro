@@ -1,0 +1,507 @@
+Frame 4: Packet, 1655 bytes on wire (13240 bits), 1655 bytes captured (13240 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 18, 2026 00:57:36.548490000 +05
+    UTC Arrival Time: Sep 17, 2026 19:57:36.548490000 UTC
+    Epoch Arrival Time: 1789675056.548490000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 3.574000 milliseconds]
+    [Time since reference or first frame: 3.603000 milliseconds]
+    Frame Number: 4
+    Frame Length: 1655 bytes (13240 bits)
+    Capture Length: 1655 bytes (13240 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ipv6:tcp:tls]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv6 (0x86dd)
+    [Stream index: 0]
+Internet Protocol Version 6, Src: ::1, Dst: ::1
+    0110 .... = Version: 6
+    .... 0000 0000 .... .... .... .... .... = Traffic Class: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        .... 0000 00.. .... .... .... .... .... = Differentiated Services Codepoint: Default (0)
+        .... .... ..00 .... .... .... .... .... = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    .... 0001 1110 0010 1110 0110 = Flow Label: 0x1e2e6
+    Payload Length: 1601
+    Next Header: TCP (6)
+    Hop Limit: 64
+    Source Address: ::1
+        [Address Space: Reserved by IETF]
+        [Special-Purpose Allocation: Loopback Address]
+            [Source: False]
+            [Destination: False]
+            [Forwardable: False]
+            [Globally Reachable: False]
+            [Reserved-by-Protocol: True]
+    Destination Address: ::1
+        [Address Space: Reserved by IETF]
+        [Special-Purpose Allocation: Loopback Address]
+            [Source: False]
+            [Destination: False]
+            [Forwardable: False]
+            [Globally Reachable: False]
+            [Reserved-by-Protocol: True]
+    [Stream index: 0]
+Transmission Control Protocol, Src Port: 41140, Dst Port: 8443, Seq: 1, Ack: 1, Len: 1569
+    Source Port: 41140
+    Destination Port: 8443
+    [Stream index: 0]
+    [Stream Packet Number: 4]
+    [Conversation completeness: Incomplete, ESTABLISHED (7)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 0... = Data: Absent
+        .... .1.. = ACK: Present
+        .... ..1. = SYN-ACK: Present
+        .... ...1 = SYN: Present
+        [Completeness Flags: ···ASS]
+    [TCP Segment Len: 1569]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 213760486
+    [Next Sequence Number: 1570    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 2586068144
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 512
+    [Calculated window size: 65536]
+    [Window size scaling factor: 128]
+    Checksum: 0x0649 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+            Kind: No-Operation (1)
+        TCP Option - No-Operation (NOP)
+            Kind: No-Operation (1)
+        TCP Option - Timestamps: TSval 3719061245, TSecr 3719061242
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 3719061245
+            Timestamp echo reply: 3719061242
+    [Timestamps]
+        [Time since first frame in this TCP stream: 3.603000 milliseconds]
+        [Time since previous frame in this TCP stream: 3.574000 milliseconds]
+    [SEQ/ACK analysis]
+        [iRTT: 29.000 microseconds]
+        [Bytes in flight: 1569]
+        [Bytes sent since last PSH flag: 1569]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (1569 bytes)
+Transport Layer Security
+    [Stream index: 0]
+    TLSv1 Record Layer: Handshake Protocol: Client Hello
+        Content Type: Handshake (22)
+        Version: TLS 1.0 (0x0301)
+        Length: 1564
+        Handshake Protocol: Client Hello
+            Handshake Type: Client Hello (1)
+            Length: 1560
+            Version: TLS 1.2 (0x0303)
+                [Expert Info (Chat/Deprecated): This legacy_version field MUST be ignored. The supported_versions extension is present and MUST be used instead.]
+                    [This legacy_version field MUST be ignored. The supported_versions extension is present and MUST be used instead.]
+                    [Severity level: Chat]
+                    [Group: Deprecated]
+            Random: d9a4ea32684d173a43aa206814e5452d9d96b045ad641ddcc184edca2a5c7470
+                GMT Unix Time: Sep 16, 2085 12:28:50.000000000 +05
+                Random Bytes: 684d173a43aa206814e5452d9d96b045ad641ddcc184edca2a5c7470
+            Session ID Length: 32
+            Session ID: 5b14be726c865a8b62ae5d671343c9f0a31ce944643a9efa68f1968ba4e514e5
+            Cipher Suites Length: 60
+            Cipher Suites (30 suites)
+                Cipher Suite: TLS_AES_256_GCM_SHA384 (0x1302)
+                Cipher Suite: TLS_CHACHA20_POLY1305_SHA256 (0x1303)
+                Cipher Suite: TLS_AES_128_GCM_SHA256 (0x1301)
+                Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 (0xc02c)
+                Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xc030)
+                Cipher Suite: TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (0x009f)
+                Cipher Suite: TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256 (0xcca9)
+                Cipher Suite: TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xcca8)
+                Cipher Suite: TLS_DHE_RSA_WITH_CHACHA20_POLY1305_SHA256 (0xccaa)
+                Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xc02b)
+                Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)
+                Cipher Suite: TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (0x009e)
+                Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384 (0xc024)
+                Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 (0xc028)
+                Cipher Suite: TLS_DHE_RSA_WITH_AES_256_CBC_SHA256 (0x006b)
+                Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256 (0xc023)
+                Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256 (0xc027)
+                Cipher Suite: TLS_DHE_RSA_WITH_AES_128_CBC_SHA256 (0x0067)
+                Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA (0xc00a)
+                Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (0xc014)
+                Cipher Suite: TLS_DHE_RSA_WITH_AES_256_CBC_SHA (0x0039)
+                Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA (0xc009)
+                Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (0xc013)
+                Cipher Suite: TLS_DHE_RSA_WITH_AES_128_CBC_SHA (0x0033)
+                Cipher Suite: TLS_RSA_WITH_AES_256_GCM_SHA384 (0x009d)
+                Cipher Suite: TLS_RSA_WITH_AES_128_GCM_SHA256 (0x009c)
+                Cipher Suite: TLS_RSA_WITH_AES_256_CBC_SHA256 (0x003d)
+                Cipher Suite: TLS_RSA_WITH_AES_128_CBC_SHA256 (0x003c)
+                Cipher Suite: TLS_RSA_WITH_AES_256_CBC_SHA (0x0035)
+                Cipher Suite: TLS_RSA_WITH_AES_128_CBC_SHA (0x002f)
+            Compression Methods Length: 1
+            Compression Methods (1 method)
+                Compression Method: null (0)
+            Extensions Length: 1427
+            Extension: renegotiation_info (len=1)
+                Type: renegotiation_info (65281)
+                Length: 1
+                Renegotiation Info extension
+                    Renegotiation info extension length: 0
+            Extension: server_name (len=14) name=localhost
+                Type: server_name (0)
+                Length: 14
+                Server Name Indication extension
+                    Server Name list length: 12
+                    Server Name Type: host_name (0)
+                    Server Name length: 9
+                    Server Name: localhost
+            Extension: ec_point_formats (len=4)
+                Type: ec_point_formats (11)
+                Length: 4
+                EC point formats Length: 3
+                Elliptic curves point formats (3)
+                    EC point format: uncompressed (0)
+                    EC point format: ansiX962_compressed_prime (1)
+                    EC point format: ansiX962_compressed_char2 (2)
+            Extension: supported_groups (len=18)
+                Type: supported_groups (10)
+                Length: 18
+                Supported Groups List Length: 16
+                Supported Groups (8 groups)
+                    Supported Group: X25519MLKEM768 (0x11ec)
+                    Supported Group: x25519 (0x001d)
+                    Supported Group: secp256r1 (0x0017)
+                    Supported Group: x448 (0x001e)
+                    Supported Group: secp384r1 (0x0018)
+                    Supported Group: secp521r1 (0x0019)
+                    Supported Group: ffdhe2048 (0x0100)
+                    Supported Group: ffdhe3072 (0x0101)
+            Extension: application_layer_protocol_negotiation (len=14)
+                Type: application_layer_protocol_negotiation (16)
+                Length: 14
+                ALPN Extension Length: 12
+                ALPN Protocol
+                    ALPN string length: 2
+                    ALPN Next Protocol: h2
+                    ALPN string length: 8
+                    ALPN Next Protocol: http/1.1
+            Extension: encrypt_then_mac (len=0)
+                Type: encrypt_then_mac (22)
+                Length: 0
+            Extension: extended_master_secret (len=0)
+                Type: extended_master_secret (23)
+                Length: 0
+            Extension: post_handshake_auth (len=0)
+                Type: post_handshake_auth (49)
+                Length: 0
+            Extension: signature_algorithms (len=54)
+                Type: signature_algorithms (13)
+                Length: 54
+                Signature Hash Algorithms Length: 52
+                Signature Hash Algorithms (26 algorithms)
+                    Signature Algorithm: mldsa65 (0x0905)
+                        Signature Hash Algorithm Hash: Unknown (9)
+                        Signature Hash Algorithm Signature: Unknown (5)
+                    Signature Algorithm: mldsa87 (0x0906)
+                        Signature Hash Algorithm Hash: Unknown (9)
+                        Signature Hash Algorithm Signature: Unknown (6)
+                    Signature Algorithm: mldsa44 (0x0904)
+                        Signature Hash Algorithm Hash: Unknown (9)
+                        Signature Hash Algorithm Signature: Unknown (4)
+                    Signature Algorithm: ecdsa_secp256r1_sha256 (0x0403)
+                        Signature Hash Algorithm Hash: SHA256 (4)
+                        Signature Hash Algorithm Signature: ECDSA (3)
+                    Signature Algorithm: ecdsa_secp384r1_sha384 (0x0503)
+                        Signature Hash Algorithm Hash: SHA384 (5)
+                        Signature Hash Algorithm Signature: ECDSA (3)
+                    Signature Algorithm: ecdsa_secp521r1_sha512 (0x0603)
+                        Signature Hash Algorithm Hash: SHA512 (6)
+                        Signature Hash Algorithm Signature: ECDSA (3)
+                    Signature Algorithm: ed25519 (0x0807)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (7)
+                    Signature Algorithm: ed448 (0x0808)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (8)
+                    Signature Algorithm: ecdsa_brainpoolP256r1tls13_sha256 (0x081a)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (26)
+                    Signature Algorithm: ecdsa_brainpoolP384r1tls13_sha384 (0x081b)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (27)
+                    Signature Algorithm: ecdsa_brainpoolP512r1tls13_sha512 (0x081c)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (28)
+                    Signature Algorithm: rsa_pss_pss_sha256 (0x0809)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (9)
+                    Signature Algorithm: rsa_pss_pss_sha384 (0x080a)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (10)
+                    Signature Algorithm: rsa_pss_pss_sha512 (0x080b)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (11)
+                    Signature Algorithm: rsa_pss_rsae_sha256 (0x0804)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (4)
+                    Signature Algorithm: rsa_pss_rsae_sha384 (0x0805)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (5)
+                    Signature Algorithm: rsa_pss_rsae_sha512 (0x0806)
+                        Signature Hash Algorithm Hash: Unknown (8)
+                        Signature Hash Algorithm Signature: Unknown (6)
+                    Signature Algorithm: rsa_pkcs1_sha256 (0x0401)
+                        Signature Hash Algorithm Hash: SHA256 (4)
+                        Signature Hash Algorithm Signature: RSA (1)
+                    Signature Algorithm: rsa_pkcs1_sha384 (0x0501)
+                        Signature Hash Algorithm Hash: SHA384 (5)
+                        Signature Hash Algorithm Signature: RSA (1)
+                    Signature Algorithm: rsa_pkcs1_sha512 (0x0601)
+                        Signature Hash Algorithm Hash: SHA512 (6)
+                        Signature Hash Algorithm Signature: RSA (1)
+                    Signature Algorithm: SHA224 ECDSA (0x0303)
+                        Signature Hash Algorithm Hash: SHA224 (3)
+                        Signature Hash Algorithm Signature: ECDSA (3)
+                    Signature Algorithm: SHA224 RSA (0x0301)
+                        Signature Hash Algorithm Hash: SHA224 (3)
+                        Signature Hash Algorithm Signature: RSA (1)
+                    Signature Algorithm: SHA224 DSA (0x0302)
+                        Signature Hash Algorithm Hash: SHA224 (3)
+                        Signature Hash Algorithm Signature: DSA (2)
+                    Signature Algorithm: SHA256 DSA (0x0402)
+                        Signature Hash Algorithm Hash: SHA256 (4)
+                        Signature Hash Algorithm Signature: DSA (2)
+                    Signature Algorithm: SHA384 DSA (0x0502)
+                        Signature Hash Algorithm Hash: SHA384 (5)
+                        Signature Hash Algorithm Signature: DSA (2)
+                    Signature Algorithm: SHA512 DSA (0x0602)
+                        Signature Hash Algorithm Hash: SHA512 (6)
+                        Signature Hash Algorithm Signature: DSA (2)
+            Extension: supported_versions (len=5) TLS 1.3, TLS 1.2
+                Type: supported_versions (43)
+                Length: 5
+                Supported Versions length: 4
+                Supported Version: TLS 1.3 (0x0304)
+                Supported Version: TLS 1.2 (0x0303)
+            Extension: psk_key_exchange_modes (len=2)
+                Type: psk_key_exchange_modes (45)
+                Length: 2
+                PSK Key Exchange Modes Length: 1
+                PSK Key Exchange Mode: PSK with (EC)DHE key establishment (psk_dhe_ke) (1)
+            Extension: key_share (len=1258) X25519MLKEM768, x25519
+                Type: key_share (51)
+                Length: 1258
+                Key Share extension
+                    Client Key Share Length: 1256
+                    Key Share Entry: Group: X25519MLKEM768, Key Exchange length: 1216
+                        Group: X25519MLKEM768 (4588)
+                        Key Exchange Length: 1216
+                        Key Exchange […]: 994a65ffec569fb22c3b8c5869640d252c330c8b7043d2a8c1932eb272c9ea69ca25e04e6c08bb606443d1a8b92156132b5b2039f8abfbeb8df64a05a27059a57545c2110f31c2c1087744bb293ecb226f27080125fa28ce897fdf19c1f2d040a8d9306272be41c75fa7a6becbf
+                    Key Share Entry: Group: x25519, Key Exchange length: 32
+                        Group: x25519 (29)
+                        Key Exchange Length: 32
+                        Key Exchange: b0d1779d40972f379920fd3a4ac48615608bf76a4e031daa04fa3625fdcfc025
+            Extension: compress_certificate (len=5)
+                Type: compress_certificate (27)
+                Length: 5
+                Algorithms Length: 4
+                Algorithm: zlib (1)
+                Algorithm: zstd (3)
+            [JA4: t13d3013h2_1d37bd780c83_8537cf56674e]
+            [JA4_r […]: t13d3013h2_002f,0033,0035,0039,003c,003d,0067,006b,009c,009d,009e,009f,1301,1302,1303,c009,c00a,c013,c014,c023,c024,c027,c028,c02b,c02c,c02f,c030,cca8,cca9,ccaa_000a,000b,000d,0016,0017,001b,002b,002d,0031,0033,ff01_0905,0906,]
+            [JA3 Fullstring […]: 771,4866-4867-4865-49196-49200-159-52393-52392-52394-49195-49199-158-49188-49192-107-49187-49191-103-49162-49172-57-49161-49171-51-157-156-61-60-53-47,65281-0-11-10-16-22-23-49-13-43-45-51-27,4588-29-23-30-24-25-256-2]
+            [JA3: 32e4b8812cda0c0d50783b438492a769]
+
+Frame 6: Packet, 1513 bytes on wire (12104 bits), 1513 bytes captured (12104 bits)
+    Encapsulation type: Ethernet (1)
+    Arrival Time: Sep 18, 2026 00:57:36.549929000 +05
+    UTC Arrival Time: Sep 17, 2026 19:57:36.549929000 UTC
+    Epoch Arrival Time: 1789675056.549929000
+    [Time shift for this packet: 0.000000000 seconds]
+    [Time delta from previous captured frame: 1.147000 milliseconds]
+    [Time delta from previous displayed frame: 1.439000 milliseconds]
+    [Time since reference or first frame: 5.042000 milliseconds]
+    Frame Number: 6
+    Frame Length: 1513 bytes (12104 bits)
+    Capture Length: 1513 bytes (12104 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: eth:ethertype:ipv6:tcp:tls]
+    Character encoding: ASCII (0)
+Ethernet II, Src: 00:00:00_00:00:00 (00:00:00:00:00:00), Dst: 00:00:00_00:00:00 (00:00:00:00:00:00)
+    Destination: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Source: 00:00:00_00:00:00 (00:00:00:00:00:00)
+        .... ..0. .... .... .... .... = LG bit: Globally unique address (factory default)
+        .... ...0 .... .... .... .... = IG bit: Individual address (unicast)
+    Type: IPv6 (0x86dd)
+    [Stream index: 0]
+Internet Protocol Version 6, Src: ::1, Dst: ::1
+    0110 .... = Version: 6
+    .... 0000 0000 .... .... .... .... .... = Traffic Class: 0x00 (DSCP: CS0, ECN: Not-ECT)
+        .... 0000 00.. .... .... .... .... .... = Differentiated Services Codepoint: Default (0)
+        .... .... ..00 .... .... .... .... .... = Explicit Congestion Notification: Not ECN-Capable Transport (0)
+    .... 0111 0100 0101 1010 0110 = Flow Label: 0x745a6
+    Payload Length: 1459
+    Next Header: TCP (6)
+    Hop Limit: 64
+    Source Address: ::1
+        [Address Space: Reserved by IETF]
+        [Special-Purpose Allocation: Loopback Address]
+            [Source: False]
+            [Destination: False]
+            [Forwardable: False]
+            [Globally Reachable: False]
+            [Reserved-by-Protocol: True]
+    Destination Address: ::1
+        [Address Space: Reserved by IETF]
+        [Special-Purpose Allocation: Loopback Address]
+            [Source: False]
+            [Destination: False]
+            [Forwardable: False]
+            [Globally Reachable: False]
+            [Reserved-by-Protocol: True]
+    [Stream index: 0]
+Transmission Control Protocol, Src Port: 8443, Dst Port: 41140, Seq: 1, Ack: 1570, Len: 1427
+    Source Port: 8443
+    Destination Port: 41140
+    [Stream index: 0]
+    [Stream Packet Number: 6]
+    [Conversation completeness: Incomplete, DATA (15)]
+        ..0. .... = RST: Absent
+        ...0 .... = FIN: Absent
+        .... 1... = Data: Present
+        .... .1.. = ACK: Present
+        .... ..1. = SYN-ACK: Present
+        .... ...1 = SYN: Present
+        [Completeness Flags: ··DASS]
+    [TCP Segment Len: 1427]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 2586068144
+    [Next Sequence Number: 1428    (relative sequence number)]
+    Acknowledgment Number: 1570    (relative ack number)
+    Acknowledgment number (raw): 213762055
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+        000. .... .... = Reserved: Not set
+        ...0 .... .... = Accurate ECN: Not set
+        .... 0... .... = Congestion Window Reduced: Not set
+        .... .0.. .... = ECN-Echo: Not set
+        .... ..0. .... = Urgent: Not set
+        .... ...1 .... = Acknowledgment: Set
+        .... .... 1... = Push: Set
+        .... .... .0.. = Reset: Not set
+        .... .... ..0. = Syn: Not set
+        .... .... ...0 = Fin: Not set
+        [TCP Flags: ·······AP···]
+    Window: 636
+    [Calculated window size: 81408]
+    [Window size scaling factor: 128]
+    Checksum: 0x05bb [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+            Kind: No-Operation (1)
+        TCP Option - No-Operation (NOP)
+            Kind: No-Operation (1)
+        TCP Option - Timestamps: TSval 3719061247, TSecr 3719061245
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 3719061247
+            Timestamp echo reply: 3719061245
+    [Timestamps]
+        [Time since first frame in this TCP stream: 5.042000 milliseconds]
+        [Time since previous frame in this TCP stream: 1.147000 milliseconds]
+    [SEQ/ACK analysis]
+        [iRTT: 29.000 microseconds]
+        [Bytes in flight: 1427]
+        [Bytes sent since last PSH flag: 1427]
+    [Client Contiguous Streams: 1]
+    [Server Contiguous Streams: 1]
+    TCP payload (1427 bytes)
+Transport Layer Security
+    [Stream index: 0]
+    TLSv1.2 Record Layer: Handshake Protocol: Server Hello
+        Content Type: Handshake (22)
+        Version: TLS 1.2 (0x0303)
+        Length: 122
+        Handshake Protocol: Server Hello
+            Handshake Type: Server Hello (2)
+            Length: 118
+            Version: TLS 1.2 (0x0303)
+                [Expert Info (Chat/Deprecated): This legacy_version field MUST be ignored. The supported_versions extension is present and MUST be used instead.]
+                    [This legacy_version field MUST be ignored. The supported_versions extension is present and MUST be used instead.]
+                    [Severity level: Chat]
+                    [Group: Deprecated]
+            Random: 1d36ce93ade93ef9dd46b967f3a19b1d91720c360c49e3360c4eaf2ab62dd616
+            Session ID Length: 32
+            Session ID: 5b14be726c865a8b62ae5d671343c9f0a31ce944643a9efa68f1968ba4e514e5
+            Cipher Suite: TLS_AES_128_GCM_SHA256 (0x1301)
+            Compression Method: null (0)
+            Extensions Length: 46
+            Extension: supported_versions (len=2) TLS 1.3
+                Type: supported_versions (43)
+                Length: 2
+                Supported Version: TLS 1.3 (0x0304)
+            Extension: key_share (len=36) x25519
+                Type: key_share (51)
+                Length: 36
+                Key Share extension
+                    Key Share Entry: Group: x25519, Key Exchange length: 32
+                        Group: x25519 (29)
+                        Key Exchange Length: 32
+                        Key Exchange: d1ba551b61c8bd326dd91a41268a0fd91832b68acbe9e45fcaaecb35efcb0d27
+            [JA3S Fullstring: 771,4865,43-51]
+            [JA3S: f4febc55ea12b31ae17cfb7e614afda8]
+    TLSv1.3 Record Layer: Change Cipher Spec Protocol: Change Cipher Spec
+        Content Type: Change Cipher Spec (20)
+        Version: TLS 1.2 (0x0303)
+        Length: 1
+        Change Cipher Spec Message
+    TLSv1.3 Record Layer: Application Data Protocol: Application Data
+        Opaque Type: Application Data (23)
+        Version: TLS 1.2 (0x0303)
+        Length: 36
+        Encrypted Application Data: eaf398d3b6f7c9a85ab710640ad1493b0d2460f99b27aad2569abbc190311412617ef447
+    TLSv1.3 Record Layer: Application Data Protocol: Application Data
+        Opaque Type: Application Data (23)
+        Version: TLS 1.2 (0x0303)
+        Length: 944
+        Encrypted Application Data […]: 8026959556220c559ffef6ec0b00c43361087ed38bf945b5b29e0d7c4eadd417693983b9b1ae1064d7d1791115dfffc9b8241e084e1e3bef96e01bab1b84fb45930b73221e26fb8e37d8714e10168830b1af23a21b089acf455b6dc4ea49fe98168ac4ecc361d
+    TLSv1.3 Record Layer: Application Data Protocol: Application Data
+        Opaque Type: Application Data (23)
+        Version: TLS 1.2 (0x0303)
+        Length: 97
+        Encrypted Application Data: b82714083fff6563d3542f7f752f2f9381b41c6faa8a781970966db958f2dbc9f072666fcb1a51c079c292d7c2129e8687a19a0c77ff2d8adf086e74cc062823981ff0bfe8596ed83553c736c7acbee9e465ac561f4f4fdfee29496be152c289af
+    TLSv1.3 Record Layer: Application Data Protocol: Application Data
+        Opaque Type: Application Data (23)
+        Version: TLS 1.2 (0x0303)
+        Length: 53
+        Encrypted Application Data: 73a8c0a1571c0f4c3ff515099a44ae837266f265fb58292ebf3ac629c435817c6096131cb5b5a7ae624acad58822881a9546104543
+    TLSv1.3 Record Layer: Application Data Protocol: Application Data
+        Opaque Type: Application Data (23)
+        Version: TLS 1.2 (0x0303)
+        Length: 139
+        Encrypted Application Data […]: fedede9691cf432fe6add24b0cb7a1dd4b5af1d1a12dadbd1fab2cec3275d35104027dcac881d87d8cc00f18c4c68efa1e30598ab9bc4fb46581a12d7030ec68d87986aa6414dd8651d542a0261be5df64de082bf860fda8e59e35e67c812e12232a38d0b870f
+

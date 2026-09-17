@@ -1,0 +1,52 @@
+ANNOTATED QUICKNOTES LOOPBACK TRACE
+Client: [::1]:55402; server: [::1]:8080; one POST /notes transaction.
+TCP flags: [S] = SYN, [S.] = SYN/ACK, [.] = ACK, [P.] = payload+ACK, [F.] = FIN+ACK.
+
+===== 1. TCP THREE-WAY HANDSHAKE: SYN -> SYN/ACK -> ACK =====
+reading from file /mnt/c/Users/user/Documents/Codex/2026-09-11/new-chat/work/DevOps-Intro/submissions/evidence/lab4-trace.pcap, link-type EN10MB (Ethernet), snapshot length 262144
+2026-09-18 00:55:09.190530 IP6 ::1.55402 > ::1.8080: Flags [S], seq 3073813130, win 65476, options [mss 65476,sackOK,TS val 3718913869 ecr 0,nop,wscale 7], length 0
+`	...(.@.................................j...6...........0.........
+...M........
+2026-09-18 00:55:09.190568 IP6 ::1.8080 > ::1.55402: Flags [S.], seq 3103313443, ack 3073813131, win 65464, options [mss 65476,sackOK,TS val 3718913870 ecr 3718913869,nop,wscale 7], length 0
+`....(.@...................................j...#.6.......0.........
+...N...M....
+2026-09-18 00:55:09.190580 IP6 ::1.55402 > ::1.8080: Flags [.], ack 1, win 512, options [nop,nop,TS val 3718913870 ecr 3718913870], length 0
+`	... .@.................................j...6.....$.....(.....
+...N...N
+===== 2. HTTP REQUEST: request line, headers, and 39-byte JSON body =====
+2026-09-18 00:55:09.190736 IP6 ::1.55402 > ::1.8080: Flags [P.], seq 1:176, ack 1, win 512, options [nop,nop,TS val 3718913870 ecr 3718913870], length 175: HTTP: POST /notes HTTP/1.1
+`	.....@.................................j...6.....$...........
+...N...NPOST /notes HTTP/1.1
+Host: localhost:8080
+User-Agent: curl/8.18.0
+Accept: */*
+Content-Type: application/json
+Content-Length: 39
+
+{"title":"trace me","body":"in flight"}
+2026-09-18 00:55:09.190742 IP6 ::1.8080 > ::1.55402: Flags [.], ack 176, win 511, options [nop,nop,TS val 3718913870 ecr 3718913870], length 0
+`.... .@...................................j...$.6.:.....(.....
+...N...N
+===== 3. HTTP RESPONSE: 201 Created and the created-note JSON =====
+2026-09-18 00:55:09.192187 IP6 ::1.8080 > ::1.55402: Flags [P.], seq 1:207, ack 176, win 512, options [nop,nop,TS val 3718913871 ecr 3718913870], length 206: HTTP: HTTP/1.1 201 Created
+`......@...................................j...$.6.:...........
+...O...NHTTP/1.1 201 Created
+Content-Type: application/json
+Date: Thu, 17 Sep 2026 19:55:09 GMT
+Content-Length: 93
+
+{"id":5,"title":"trace me","body":"in flight","created_at":"2026-09-17T19:55:09.191795467Z"}
+
+2026-09-18 00:55:09.192275 IP6 ::1.55402 > ::1.8080: Flags [.], ack 207, win 511, options [nop,nop,TS val 3718913871 ecr 3718913871], length 0
+`	... .@.................................j...6.:.........(.....
+...O...O
+===== 4. CONNECTION CLOSE: client FIN/ACK -> server FIN/ACK -> final ACK =====
+2026-09-18 00:55:09.193332 IP6 ::1.55402 > ::1.8080: Flags [F.], seq 176, ack 207, win 512, options [nop,nop,TS val 3718913872 ecr 3718913871], length 0
+`	... .@.................................j...6.:.........(.....
+...P...O
+2026-09-18 00:55:09.193743 IP6 ::1.8080 > ::1.55402: Flags [F.], seq 207, ack 177, win 512, options [nop,nop,TS val 3718913873 ecr 3718913872], length 0
+`.... .@...................................j.....6.;.....(.....
+...Q...P
+2026-09-18 00:55:09.193814 IP6 ::1.55402 > ::1.8080: Flags [.], ack 208, win 512, options [nop,nop,TS val 3718913873 ecr 3718913873], length 0
+`	... .@.................................j...6.;.........(.....
+...Q...Q

@@ -1,0 +1,93 @@
+Connecting to 127.0.0.1
+depth=1 CN=Caddy Local Authority - ECC Intermediate
+verify error:num=20:unable to get local issuer certificate
+verify return:1
+depth=0 
+verify return:1
+CONNECTED(00000003)
+---
+Certificate chain
+ 0 s:
+   i:CN=Caddy Local Authority - ECC Intermediate
+   a:PKEY: EC, (prime256v1); sigalg: ecdsa-with-SHA256
+   v:NotBefore: Sep 17 19:57:35 2026 GMT; NotAfter: Sep 18 07:57:35 2026 GMT
+-----BEGIN CERTIFICATE-----
+MIIBvjCCAWSgAwIBAgIRAI64Z451JVzSUhK1ntPqBpkwCgYIKoZIzj0EAwIwMzEx
+MC8GA1UEAxMoQ2FkZHkgTG9jYWwgQXV0aG9yaXR5IC0gRUNDIEludGVybWVkaWF0
+ZTAeFw0yNjA5MTcxOTU3MzVaFw0yNjA5MTgwNzU3MzVaMAAwWTATBgcqhkjOPQIB
+BggqhkjOPQMBBwNCAARsgsQpkodWA+wy5RgJbS5Ms0tY3c/GH+KIjR8XCWwby2BK
+Nea7Ki0eAVusqtDUGZA2MvWSacR3CHZrQ8ZmLAago4GLMIGIMA4GA1UdDwEB/wQE
+AwIHgDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwHQYDVR0OBBYEFD05
+ubC0itUqG4BEBhBtoKVd6XhmMB8GA1UdIwQYMBaAFGYGF/0T8GiUssJKGl/ZymAU
+tAfMMBcGA1UdEQEB/wQNMAuCCWxvY2FsaG9zdDAKBggqhkjOPQQDAgNIADBFAiEA
+04SF4i1U80qGDawbS38gllfY7jgaGBPrqPw4D8qdVUACIDUrtIQZd2Yh0i78KZtf
+lYDuDWJt4yxHdF6UQzuAy1i3
+-----END CERTIFICATE-----
+ 1 s:CN=Caddy Local Authority - ECC Intermediate
+   i:CN=Caddy Local Authority - 2026 ECC Root
+   a:PKEY: EC, (prime256v1); sigalg: ecdsa-with-SHA256
+   v:NotBefore: Sep 17 19:57:35 2026 GMT; NotAfter: Sep 24 19:57:35 2026 GMT
+-----BEGIN CERTIFICATE-----
+MIIBxzCCAW2gAwIBAgIQaqgA9zPY2zG9cKWLRNNDwjAKBggqhkjOPQQDAjAwMS4w
+LAYDVQQDEyVDYWRkeSBMb2NhbCBBdXRob3JpdHkgLSAyMDI2IEVDQyBSb290MB4X
+DTI2MDkxNzE5NTczNVoXDTI2MDkyNDE5NTczNVowMzExMC8GA1UEAxMoQ2FkZHkg
+TG9jYWwgQXV0aG9yaXR5IC0gRUNDIEludGVybWVkaWF0ZTBZMBMGByqGSM49AgEG
+CCqGSM49AwEHA0IABA6cAFQpaKhWRuWb72ml2lamlKKQ/5+qr/L/p5vCHNMOn7yw
+1cEnnuOTKlF2TTr614vxCm5n0ispFl4uj0eZm0yjZjBkMA4GA1UdDwEB/wQEAwIB
+BjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBRmBhf9E/BolLLCShpf2cpg
+FLQHzDAfBgNVHSMEGDAWgBS3BtEpxTLpoECrLeJgu1dcVyAYWDAKBggqhkjOPQQD
+AgNIADBFAiEA2S2+2RsmnTm6L8li6a/FOY61vuJe0oATy1zOV1VmDyICICHG3+L3
+c3pkzc5W9ixiZn9SNq2deMnhGOiIfzdiJbXO
+-----END CERTIFICATE-----
+---
+Server certificate
+subject=
+issuer=CN=Caddy Local Authority - ECC Intermediate
+---
+No client certificate CA names sent
+Peer signing digest: SHA256
+Peer signature type: ecdsa_secp256r1_sha256
+Peer Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1273 bytes and written 1615 bytes
+Verification error: unable to get local issuer certificate
+---
+New, TLSv1.3, Cipher is TLS_AES_128_GCM_SHA256
+Protocol: TLSv1.3
+Server public key is 256 bit
+This TLS version forbids renegotiation.
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+Early data was not sent
+Verify return code: 20 (unable to get local issuer certificate)
+---
+DONE
+---
+Post-Handshake New Session Ticket arrived:
+SSL-Session:
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_128_GCM_SHA256
+    Session-ID: 1E38D2198A34D4E41931BF07E0B44D388080CBA67F210114DA81E269389D4924
+    Session-ID-ctx: 
+    Resumption PSK: E2EAB8F308ECB3E300FC348AA8C3B95128DC181F849DD7106CEBCD00F2A2381E
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 604800 (seconds)
+    TLS session ticket:
+    0000 - 0b dd ed cd 21 e0 ec d9-01 f2 98 e7 3f f4 59 20   ....!.......?.Y 
+    0010 - 84 b5 b4 79 bd 69 95 5d-df 65 6b 18 86 5d cc 68   ...y.i.].ek..].h
+    0020 - 4e f4 2f 03 7d f3 71 0e-55 b1 4c f5 39 9a f2 ee   N./.}.q.U.L.9...
+    0030 - af 51 7b 81 16 e6 9d 21-9c db bb d5 35 76 41 e6   .Q{....!....5vA.
+    0040 - 76 30 58 93 9f 2a f3 b9-a2 de 87 04 19 80 40 b5   v0X..*........@.
+    0050 - c7 da 2b c0 f1 f2 b2 ca-91 73 e7 6c 8e c7 87 59   ..+......s.l...Y
+    0060 - 0f 39 39 0c 65 72 7e 05-dc                        .99.er~..
+
+    Start Time: 1789675058
+    Timeout   : 7200 (sec)
+    Verify return code: 20 (unable to get local issuer certificate)
+    Extended master secret: no
+    Max Early Data: 0
+---
+read R BLOCK

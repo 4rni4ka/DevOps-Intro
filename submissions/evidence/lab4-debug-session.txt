@@ -1,0 +1,89 @@
+TASK 1: FIVE DEBUGGING COMMANDS
+
+$ ss -tlnp | grep :8080
+LISTEN 0      4096                *:8080             *:*    users:(("quicknotes",pid=733,fd=3))
+
+$ ip route show
+default via 172.26.112.1 dev eth0 proto kernel
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+172.26.112.0/20 dev eth0 proto kernel scope link src 172.26.123.241
+
+$ mtr -rwc 5 localhost
+Start: 2026-09-18T00:56:11+0500
+HOST: WIN-NCH2CQLTP9J Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1.|-- localhost        0.0%     5    0.1   0.1   0.1   0.4   0.2
+
+$ dig +short example.com @1.1.1.1
+104.20.23.154
+172.66.147.243
+
+$ journalctl --user -u quicknotes -n 20 || true
+-- No entries --
+
+TASK 2: REPRODUCE BIND CONFLICT
+
+$ ADDR=:8080 go run .
+2026/09/18 00:56:23 quicknotes listening on :8080 (notes loaded: 4)
+2026/09/18 00:56:23 listen: listen tcp :8080: bind: address already in use
+exit status 1
+
+TASK 2: OUTSIDE-IN CHAIN
+
+$ ps -ef | grep quicknotes | grep -v grep
+root         733     588  0 00:56 pts/0    00:00:00 /tmp/quicknotes-lab4-debug.WqMmnP/quicknotes
+
+$ ss -tlnp | grep 8080
+LISTEN 0      4096                *:8080             *:*    users:(("quicknotes",pid=733,fd=3))
+
+$ curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/health
+200
+
+$ iptables -L -n -v
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 DOCKER-USER     all  --  *      *       0.0.0.0/0     0.0.0.0/0
+    0     0 DOCKER-FORWARD  all  --  *      *       0.0.0.0/0     0.0.0.0/0
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain DOCKER (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 DROP       all  --  !docker0 docker0  0.0.0.0/0       0.0.0.0/0
+
+Chain DOCKER-BRIDGE (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 DOCKER     all  --  *      docker0  0.0.0.0/0         0.0.0.0/0
+
+Chain DOCKER-CT (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 ACCEPT     all  --  *      docker0  0.0.0.0/0         0.0.0.0/0  ctstate RELATED,ESTABLISHED
+
+Chain DOCKER-FORWARD (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+    0     0 DOCKER-CT        all  --  *       *  0.0.0.0/0        0.0.0.0/0
+    0     0 DOCKER-INTERNAL  all  --  *       *  0.0.0.0/0        0.0.0.0/0
+    0     0 DOCKER-BRIDGE    all  --  *       *  0.0.0.0/0        0.0.0.0/0
+    0     0 ACCEPT           all  --  docker0 *  0.0.0.0/0        0.0.0.0/0
+
+Chain DOCKER-INTERNAL (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain DOCKER-USER (1 references)
+ pkts bytes target     prot opt in     out     source               destination
+
+$ dig +short localhost
+127.0.0.1
+
+TASK 2: REPAIR AND RE-VERIFY
+
+$ kill $PID1
+$ ADDR=:8080 quicknotes &
+$ curl -s http://localhost:8080/health
+{"notes":4,"status":"ok"}
+
+$ ss -tlnp | grep 8080
+LISTEN 0      4096                *:8080             *:*    users:(("quicknotes",pid=825,fd=3))
