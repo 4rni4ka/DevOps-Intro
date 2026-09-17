@@ -1,5 +1,7 @@
 name: QuickNotes CI
 
+# Keep one stable aggregate check for protected pull requests.
+
 on:
   push:
     branches:
