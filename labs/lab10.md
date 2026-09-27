@@ -12,7 +12,7 @@
 
 ## Why these platforms?
 
-> **Changed in September 2026:** Hugging Face now requires a paid plan to create Docker Spaces ([Spaces overview](https://huggingface.co/docs/hub/spaces-overview)), so Task 2 moved to Render. If you already finished Task 2 on an HF Space, it is still accepted.
+> **Changed in September 2026:** Hugging Face now requires a paid plan to create Docker Spaces ([Spaces overview](https://huggingface.co/docs/hub/spaces-overview)), so Task 2 moved to Render. Render asks some new accounts to verify a card, and Russian cards fail there: if that happens to you, use **GitHub Codespaces** (Option B in Task 2). If you already finished Task 2 on an HF Space, it is still accepted.
 
 Cloud Run, Fly.io, AWS Lambda all require a credit card on signup — a real blocker for Innopolis students. This lab uses two platforms that are **truly free, no card required, no quotas surprise**:
 
@@ -20,9 +20,10 @@ Cloud Run, Fly.io, AWS Lambda all require a credit card on signup — a real blo
 |----------|-------------------|:--------------:|
 | **GitHub Container Registry (`ghcr.io`)** | Public OCI image hosting; OIDC-friendly from Actions | ❌ |
 | **Render** (free web service) | Runs your `ghcr.io` image; public `https://<service>.onrender.com` URL; spins down after 15 min idle (scale-to-zero, about 1 min to wake) | ❌ |
+| **GitHub Codespaces** (fallback) | Cloud VM from your GitHub account, 120 compute hours/month free; a public port gets `https://<codespace>-8080.app.github.dev`; stops when idle, does not wake on requests | ❌ |
 | **Cloudflare Tunnel** (`cloudflared`) | Exposes a local container at a public `https://<random>.trycloudflare.com` URL via Cloudflare's edge — zero account, zero card | ❌ |
 
-You will deploy the **same image** to both Render and Cloudflare Tunnel and *measure* the difference.
+You will deploy the **same image** to Render (or Codespaces) and Cloudflare Tunnel and *measure* the difference.
 
 ---
 
@@ -100,9 +101,11 @@ In `submissions/lab10.md`:
 
 ---
 
-## Task 2 — Deploy to Render (4 pts)
+## Task 2 — Deploy to Render or Codespaces (4 pts)
 
-### 2.1: Requirements
+Use **Option A (Render)**. If Render asks you for a card, switch to **Option B (Codespaces)**. Say which one you used and why.
+
+### 2.1: Option A, Render: requirements
 
 Create a **Render free web service** that runs QuickNotes:
 
@@ -119,6 +122,17 @@ Create a **Render free web service** that runs QuickNotes:
 
 Save what you configured in `cloud/render.md` (source, env vars, health check path, region), or as a `render.yaml` Blueprint if you prefer config as code.
 
+### 2.1b: Option B, GitHub Codespaces: requirements
+
+A codespace is a cloud VM for development. GitHub's terms allow it for testing your project, not for hosting production traffic, which is what this task does.
+
+1. Add `.devcontainer/devcontainer.json` to your fork so that every codespace start runs your `ghcr.io/<you>/<repo>/quicknotes:v0.1.0` image and forwards port `8080`. Docker is not in every base image: pick an image or feature that provides it
+2. Create a codespace on your fork (**Code > Codespaces**, or `gh codespace create`; the CLI needs `gh auth refresh -h github.com -s codespace` once)
+3. Make port `8080` **public** (Ports tab, or `gh codespace ports visibility 8080:public -c <name>`). Visibility cannot be set in `devcontainer.json`
+4. `https://<codespace>-8080.app.github.dev` returns QuickNotes JSON for `/health`, `/notes`, etc., from a machine that is not logged in to GitHub
+
+Save `devcontainer.json` in the fork and copy it to `cloud/devcontainer.md` with the commands you ran.
+
 ### 2.2: Demonstrate scale-to-zero (Render spin-down)
 
 Free web services **spin down** after 15 minutes without traffic. The next request wakes the service; that wait is the cold start.
@@ -129,9 +143,11 @@ Free web services **spin down** after 15 minutes without traffic. The next reque
 4. Repeat the cold measurement 3 times (spin down, wake, spin down)
 5. `POST` a note, let the service spin down, then `GET /notes` again. Record what happened to your note
 
+**Option B:** a stopped codespace does not wake on a request, so measure a manual start instead. Record warm p50 as above, then 3 times: `gh codespace stop -c <name>`, curl the public URL (record what a stopped codespace returns), start it again from [github.com/codespaces](https://github.com/codespaces) (or `gh codespace ssh -c <name>`), and time until `/health` returns 200. Do step 5 too.
+
 ### 2.3: Tear down
 
-When done, suspend or delete the service in its **Settings**, or leave it: free instance hours cost nothing.
+When done, suspend or delete the service in its **Settings**, or leave it: free instance hours cost nothing. Codespaces: `gh codespace delete -c <name>`, because a stopped codespace still uses the 15 GB storage quota.
 
 ### 2.4: Design questions
 
@@ -139,12 +155,14 @@ When done, suspend or delete the service in its **Settings**, or leave it: free 
 - e) **Why does Render inject `PORT` instead of reading your `EXPOSE`?** Which env vars did you set, and what does the `New primary port detected` restart cost you on every mismatched deploy?
 - f) **Existing image vs Render building from your repo:** what's the trade-off? (Hint: caching, reproducibility, the image you scanned in Lab 9.) Also explain where your note from 2.2 step 5 went.
 
+Option B answers instead: d) a stopped codespace vs Render spin-down: which one wakes on a request, and why is that the line between a dev environment and a hosting platform? e) why do GitHub's terms forbid production hosting on Codespaces, and what would you need to add to QuickNotes on Codespaces to call it production? f) where did your note from step 5 go, and why is the answer different from Render's?
+
 ### 2.5: Document
 
 In `submissions/lab10.md`:
 - Your service URL + a `curl -v` against `/health`
-- The deploy log lines showing the port QuickNotes started on
-- `cloud/render.md` (or `render.yaml`) + the deploy-hook step of your workflow
+- Option A: the deploy log lines showing the port QuickNotes started on, `cloud/render.md` (or `render.yaml`) + the deploy-hook step of your workflow
+- Option B: `devcontainer.json`, `gh codespace ports -c <name>` output showing `8080` public
 - Warm p50 latency
 - Cold latencies (3 measurements) + the note-persistence result
 - Design questions d, e, f answered
@@ -155,7 +173,7 @@ In `submissions/lab10.md`:
 
 ### B.1: Goal
 
-Expose the **same** QuickNotes image to the public internet via **Cloudflare Tunnel** (`cloudflared`) — *zero account*, *zero card*, edge-routed via Cloudflare's network. Then **compare** the resulting latency against your Render service.
+Expose the **same** QuickNotes image to the public internet via **Cloudflare Tunnel** (`cloudflared`) — *zero account*, *zero card*, edge-routed via Cloudflare's network. Then **compare** the resulting latency against your Render service or codespace.
 
 ### B.2: Requirements
 
@@ -171,7 +189,7 @@ Expose the **same** QuickNotes image to the public internet via **Cloudflare Tun
 
 Same QuickNotes, two delivery models. Build this table in `submissions/lab10.md`:
 
-| Metric | Render (hosted)    | Cloudflare Tunnel (local-via-edge) |
+| Metric | Render / Codespace | Cloudflare Tunnel (local-via-edge) |
 |--------|-------------------:|-----------------------------------:|
 | Warm p50               |                  ? |                                  ? |
 | Warm p95               |                  ? |                                  ? |
@@ -181,15 +199,15 @@ Same QuickNotes, two delivery models. Build this table in `submissions/lab10.md`
 
 ### B.4: Design questions
 
-- g) **Architectural difference:** on Render your container runs in Render's datacenter; in Cloudflare Tunnel your container runs on *your laptop* and Cloudflare's edge proxies traffic in. Which one is "really cloud" — and does the distinction matter to your users?
-- h) **Latency dominator** for each: in the Render case, what's the slow part of warm latency? In the Tunnel case, what's the slow part?
+- g) **Architectural difference:** on Render (or Codespaces) your container runs in someone else's datacenter; in Cloudflare Tunnel your container runs on *your laptop* and Cloudflare's edge proxies traffic in. Which one is "really cloud" — and does the distinction matter to your users?
+- h) **Latency dominator** for each: in the Render or Codespaces case, what's the slow part of warm latency? In the Tunnel case, what's the slow part?
 - i) **When would Cloudflare Tunnel actually be the right production pick?** (Hint: home labs, on-prem services exposed externally, dev URLs for stakeholder review.) When is it never the right pick?
 
 ---
 
 ## How to Submit
 
-1. Release CI workflow + `cloud/` directory (containing `render.md` or `render.yaml` and any tunnel config you wrote) in your fork
+1. Release CI workflow + `cloud/` directory (containing `render.md`, `render.yaml` or `devcontainer.md`, and any tunnel config you wrote); Option B also needs `.devcontainer/devcontainer.json` in your fork
 2. Tagged release exists on `origin`
 3. `submissions/lab10.md` covers all attempted tasks
 4. PR from `feature/lab10` → course repo's `main`
@@ -206,8 +224,8 @@ Same QuickNotes, two delivery models. Build this table in `submissions/lab10.md`
 - ✅ Design questions a-c answered
 
 ### Task 2 (4 pts)
-- ✅ Render service serves QuickNotes at a public URL; `/health` and `/notes` work
-- ✅ A tag push redeploys Render through the deploy hook (secret, not committed)
+- ✅ Render service or codespace serves QuickNotes at a public URL; `/health` and `/notes` work
+- ✅ Option A: a tag push redeploys Render through the deploy hook (secret, not committed). Option B: `devcontainer.json` starts QuickNotes on codespace start
 - ✅ Cold-vs-warm latency measured (3 cold samples)
 - ✅ Design questions d-f answered
 
@@ -224,7 +242,7 @@ Same QuickNotes, two delivery models. Build this table in `submissions/lab10.md`
 | Task | Points | Criteria |
 |------|-------:|----------|
 | **Task 1** — Tag → CI → ghcr.io | **6** | Workflow correct, image pullable, design questions |
-| **Task 2** — Render deploy | **4** | Public URL, scale-to-zero observed, design questions |
+| **Task 2** — Render or Codespaces deploy | **4** | Public URL, scale-to-zero observed, design questions |
 | **Bonus** — Cloudflare Tunnel + comparison | **2** | Tunnel reachable from outside, table, design questions |
 | **Total** | **10 + 2 bonus** | |
 
@@ -234,6 +252,8 @@ Same QuickNotes, two delivery models. Build this table in `submissions/lab10.md`
 
 - 🪤 **Image not public on ghcr.io** — first push creates a *private* package. Flip visibility to public via the package's GH UI once
 - 🪤 **Deploy takes about 45 s longer and logs `New primary port detected ... Restarting deploy`**: `PORT` and the port QuickNotes listens on differ. It still goes live, but fix the env vars
+- 🪤 **Render shows a card verification screen** (a $1 hold, cancelled right after): Russian cards fail there. Do not look for workarounds, use Option B
+- 🪤 **Codespace URL asks you to log in to GitHub**: port `8080` is still private. Check visibility again after every codespace restart
 - 🪤 **Render cannot pull the image**: the ghcr.io package is still private, or it was built only for `arm64` (Render runs `linux/amd64`; Apple Silicon users build with `--platform linux/amd64`)
 - 🪤 **Deploy hook returns `400 deploy hook cannot change the host, project, or image name`**: only the tag in `imgURL` may differ from the image the service was created with. URL-encode it (`%2F` for `/`, `%3A` for `:`)
 - 🪤 **Service billed at $7/month**: the create form pre-selects a paid instance type. Pick **Free** before clicking Deploy; no card is asked for Free
@@ -245,7 +265,7 @@ Same QuickNotes, two delivery models. Build this table in `submissions/lab10.md`
 
 ## Guidelines
 
-- Both deploy targets are **truly free, no card**: that's the design intent. If you find yourself adding a credit card, you've gone off the rails. If Render is unreachable from your network, another card-free host that runs your `ghcr.io` image and sleeps when idle is accepted: say which one and why in the report
+- Both deploy targets are **truly free, no card**: that's the design intent. If you find yourself adding a credit card, you've gone off the rails. If neither Render nor Codespaces works for you, another card-free host that runs your `ghcr.io` image is accepted: say which one and why in the report
 - Treat this as production rehearsal: tag, build, push, sign (Cosign — Lecture 9), deploy. The platform changes; the workflow doesn't
 - For the bonus, measure from a *different* machine than the one running the tunnel — the latency you care about is what *users* see, not localhost-to-localhost
 - Fix the port mismatch with configuration (`PORT` / `ADDR`), not by changing QuickNotes
@@ -257,6 +277,8 @@ Same QuickNotes, two delivery models. Build this table in `submissions/lab10.md`
 - 📖 [Render: Deploy for Free](https://render.com/docs/free) (limits, spin-down, ephemeral filesystem)
 - 📖 [Render: Deploy a prebuilt Docker image](https://render.com/docs/deploying-an-image)
 - 📖 [Render: Deploy hooks](https://render.com/docs/deploy-hooks)
+- 📖 [Codespaces: Forwarding ports](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace) (public visibility, URL format)
+- 📖 [Codespaces: billing and free quota](https://docs.github.com/en/billing/concepts/product-billing/github-codespaces)
 - 📖 [GitHub Container Registry docs](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 - 📖 [`docker/build-push-action`](https://github.com/docker/build-push-action)
 - 📖 [Cloudflare Tunnel — Quick tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/)
