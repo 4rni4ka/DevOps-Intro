@@ -12,10 +12,19 @@
           - git
         state: present
         update_cache: true
+        cache_valid_time: 3600
 
     - name: Create the ansible-pull working directory
       ansible.builtin.file:
         path: /var/lib/ansible-pull
+        state: directory
+        owner: root
+        group: root
+        mode: "0755"
+
+    - name: Create the local inventory directory
+      ansible.builtin.file:
+        path: /etc/ansible
         state: directory
         owner: root
         group: root
