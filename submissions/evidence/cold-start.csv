@@ -1,0 +1,11 @@
+runtime,sample,cold_start_ms
+spin,1,843
+spin,2,86
+spin,3,61
+spin,4,104
+spin,5,103
+docker,1,1226
+docker,2,935
+docker,3,889
+docker,4,1090
+docker,5,963
