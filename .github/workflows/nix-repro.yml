@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       digest: ${{ steps.digest.outputs.sha }}
+      binary_hash: ${{ steps.binary.outputs.hash }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Deliberately diverge one build input (temporary gate test)
-        run: echo ' ' >> app/seed.json
       - uses: cachix/install-nix-action@448cde739abec1eaf0646249e3d25bb8d9bc7702 # v31.11.2
         with:
           extra_nix_config: |
@@ -23,11 +22,15 @@ jobs:
       - run: nix build .#docker
       - id: digest
         run: echo "sha=$(sha256sum result | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
+      - run: nix build .#quicknotes --out-link result-binary
+      - id: binary
+        run: echo "hash=$(nix-store --query --hash $(readlink result-binary))" >> "$GITHUB_OUTPUT"
 
   build-b:
     runs-on: ubuntu-24.04
     outputs:
       digest: ${{ steps.digest.outputs.sha }}
+      binary_hash: ${{ steps.binary.outputs.hash }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: cachix/install-nix-action@448cde739abec1eaf0646249e3d25bb8d9bc7702 # v31.11.2
@@ -37,6 +40,9 @@ jobs:
       - run: nix build .#docker
       - id: digest
         run: echo "sha=$(sha256sum result | cut -d ' ' -f1)" >> "$GITHUB_OUTPUT"
+      - run: nix build .#quicknotes --out-link result-binary
+      - id: binary
+        run: echo "hash=$(nix-store --query --hash $(readlink result-binary))" >> "$GITHUB_OUTPUT"
 
   compare:
     runs-on: ubuntu-24.04
@@ -44,10 +50,16 @@ jobs:
     env:
       DIGEST_A: ${{ needs.build-a.outputs.digest }}
       DIGEST_B: ${{ needs.build-b.outputs.digest }}
+      BIN_A: ${{ needs.build-a.outputs.binary_hash }}
+      BIN_B: ${{ needs.build-b.outputs.binary_hash }}
     steps:
       - name: Compare independent image digests
         run: |
           echo "Build A: $DIGEST_A"
           echo "Build B: $DIGEST_B"
+          echo "Binary A: $BIN_A"
+          echo "Binary B: $BIN_B"
           test -n "$DIGEST_A"
           test "$DIGEST_A" = "$DIGEST_B"
+          test -n "$BIN_A"
+          test "$BIN_A" = "$BIN_B"

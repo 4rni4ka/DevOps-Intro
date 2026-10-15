@@ -1,0 +1,3 @@
+app/** text eol=lf
+flake.nix text eol=lf
+flake.lock text eol=lf
