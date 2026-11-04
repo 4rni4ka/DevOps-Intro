@@ -1,0 +1,134 @@
+{
+  "url": "https://quicknotes-4rni4ka.onrender.com",
+  "started_utc": "2026-11-04T11:11:34.125639+00:00",
+  "warm": [
+    {
+      "status": 200,
+      "seconds": 0.5487285999988671,
+      "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+    },
+    {
+      "status": 200,
+      "seconds": 0.3136510000040289,
+      "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+    },
+    {
+      "status": 200,
+      "seconds": 0.31206110000493936,
+      "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+    },
+    {
+      "status": 200,
+      "seconds": 0.3263433999964036,
+      "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+    },
+    {
+      "status": 200,
+      "seconds": 0.5183002999983728,
+      "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+    }
+  ],
+  "warm_p50_seconds": 0.3263433999964036,
+  "warm_p95_seconds": 0.5487285999988671,
+  "cold": [
+    {
+      "cycle": 1,
+      "created_note": {
+        "id": 5,
+        "title": "sleep-probe-d1c0a7a60ea6476096ad61c937945649",
+        "body": "disposable lab probe",
+        "created_at": "2026-11-04T11:11:37.454029678Z"
+      },
+      "idle_seconds": 1260,
+      "idle_started_utc": "2026-11-04T11:11:37.528645+00:00",
+      "idle_elapsed_seconds": 1260.0107537000004,
+      "wake_requested_utc": "2026-11-04T11:32:37.546647+00:00",
+      "first_response": {
+        "status": 200,
+        "seconds": 13.968634700009716,
+        "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+      },
+      "wake_attempts": [
+        {
+          "status": 200,
+          "seconds": 13.968634700009716,
+          "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+        }
+      ],
+      "ready_seconds": 13.984340399998473,
+      "ready": true,
+      "notes_after_wake": {
+        "status": 200,
+        "seconds": 0.6798785999999382,
+        "body": "[{\"id\":1,\"title\":\"Welcome to QuickNotes\",\"body\":\"This is the project you'll containerize, deploy, monitor, and harden across all 10 labs.\",\"created_at\":\"2026-01-15T10:00:00Z\"},{\"id\":2,\"title\":\"Read app/main.go first\",\"body\":\"Start by understanding the entry point \u2014 env vars, signal handling, graceful shutdown.\",\"created_at\":\"2026-01-15T10:05:00Z\"},{\"id\":3,\"title\":\"DevOps mantra\",\"body\":\"If it hurts, do it more often.\",\"created_at\":\"2026-01-15T10:10:00Z\"},{\"id\":4,\"title\":\"Endpoint cheat-sheet\",\"body\":\"GET /notes  GET /notes/{id}  POST /notes  DELETE /notes/{id}  GET /health  GET /metrics\",\"created_at\":\"2026-01-15T10:15:00Z\"}]\n"
+      },
+      "note_survived": false
+    },
+    {
+      "cycle": 2,
+      "created_note": {
+        "id": 5,
+        "title": "sleep-probe-c022aac87216411eb9a51de29d3dfd21",
+        "body": "disposable lab probe",
+        "created_at": "2026-11-04T11:32:52.659444745Z"
+      },
+      "idle_seconds": 1260,
+      "idle_started_utc": "2026-11-04T11:32:52.959087+00:00",
+      "idle_elapsed_seconds": 1260.0008207999927,
+      "wake_requested_utc": "2026-11-04T11:53:52.961478+00:00",
+      "first_response": {
+        "status": 200,
+        "seconds": 12.621118800001568,
+        "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+      },
+      "wake_attempts": [
+        {
+          "status": 200,
+          "seconds": 12.621118800001568,
+          "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+        }
+      ],
+      "ready_seconds": 12.621296900004381,
+      "ready": true,
+      "notes_after_wake": {
+        "status": 200,
+        "seconds": 0.8717986999981804,
+        "body": "[{\"id\":1,\"title\":\"Welcome to QuickNotes\",\"body\":\"This is the project you'll containerize, deploy, monitor, and harden across all 10 labs.\",\"created_at\":\"2026-01-15T10:00:00Z\"},{\"id\":2,\"title\":\"Read app/main.go first\",\"body\":\"Start by understanding the entry point \u2014 env vars, signal handling, graceful shutdown.\",\"created_at\":\"2026-01-15T10:05:00Z\"},{\"id\":3,\"title\":\"DevOps mantra\",\"body\":\"If it hurts, do it more often.\",\"created_at\":\"2026-01-15T10:10:00Z\"},{\"id\":4,\"title\":\"Endpoint cheat-sheet\",\"body\":\"GET /notes  GET /notes/{id}  POST /notes  DELETE /notes/{id}  GET /health  GET /metrics\",\"created_at\":\"2026-01-15T10:15:00Z\"}]\n"
+      },
+      "note_survived": false
+    },
+    {
+      "cycle": 3,
+      "created_note": {
+        "id": 5,
+        "title": "sleep-probe-d46a6f4452ba4e85a966b391ba5e7d06",
+        "body": "disposable lab probe",
+        "created_at": "2026-11-04T11:54:06.774308233Z"
+      },
+      "idle_seconds": 1260,
+      "idle_started_utc": "2026-11-04T11:54:06.848537+00:00",
+      "idle_elapsed_seconds": 1260.0004577999935,
+      "wake_requested_utc": "2026-11-04T12:15:06.850858+00:00",
+      "first_response": {
+        "status": 200,
+        "seconds": 13.966435700000147,
+        "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+      },
+      "wake_attempts": [
+        {
+          "status": 200,
+          "seconds": 13.966435700000147,
+          "body": "{\"notes\":4,\"status\":\"ok\"}\n"
+        }
+      ],
+      "ready_seconds": 13.966702899997472,
+      "ready": true,
+      "notes_after_wake": {
+        "status": 200,
+        "seconds": 0.6665334000135772,
+        "body": "[{\"id\":1,\"title\":\"Welcome to QuickNotes\",\"body\":\"This is the project you'll containerize, deploy, monitor, and harden across all 10 labs.\",\"created_at\":\"2026-01-15T10:00:00Z\"},{\"id\":2,\"title\":\"Read app/main.go first\",\"body\":\"Start by understanding the entry point \u2014 env vars, signal handling, graceful shutdown.\",\"created_at\":\"2026-01-15T10:05:00Z\"},{\"id\":3,\"title\":\"DevOps mantra\",\"body\":\"If it hurts, do it more often.\",\"created_at\":\"2026-01-15T10:10:00Z\"},{\"id\":4,\"title\":\"Endpoint cheat-sheet\",\"body\":\"GET /notes  GET /notes/{id}  POST /notes  DELETE /notes/{id}  GET /health  GET /metrics\",\"created_at\":\"2026-01-15T10:15:00Z\"}]\n"
+      },
+      "note_survived": false
+    }
+  ]
+}
